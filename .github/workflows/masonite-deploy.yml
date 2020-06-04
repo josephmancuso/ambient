@@ -18,7 +18,7 @@ jobs:
           mkdir -p /srv/sites/basic  # Make the directory if it doesnt exist
           cd /srv/sites/basic # Go to that directory
           git clone https://github.com/${{ github.repository }}.git ${{ github.sha }} # Clone the current repo
-          fuser -k 8001/tcp # Kill the application already running on 8001 (current production app)
+          fuser -k 8003/tcp # Kill the application already running on 8001 (current production app)
           shopt -s extglob # enable the command below this one
           rm -rfv !("${{ github.sha }}") # Delete all directories except for the one we just created (old deployments)
           cd ${{ github.sha }} # Go to the directory we just made (current deployment)
