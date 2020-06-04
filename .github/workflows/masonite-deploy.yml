@@ -15,15 +15,15 @@ jobs:
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
         script: |
-          mkdir -p /srv/sites/basic  # Make the directory if it doesnt exist
-          cd /srv/sites/basic # Go to that directory
+          mkdir -p /srv/sites/ambient  # Make the directory if it doesnt exist
+          cd /srv/sites/ambient # Go to that directory
           git clone https://github.com/${{ github.repository }}.git ${{ github.sha }} # Clone the current repo
           fuser -k 8003/tcp # Kill the application already running on 8001 (current production app)
           shopt -s extglob # enable the command below this one
           rm -rfv !("${{ github.sha }}") # Delete all directories except for the one we just created (old deployments)
           cd ${{ github.sha }} # Go to the directory we just made (current deployment)
-          python3 -m venv /venvs/basic # Make our virtual environment if it doesn't exist
-          source /venvs/basic/bin/activate # Activate our virtual Environment
+          python3 -m venv /venvs/ambient # Make our virtual environment if it doesn't exist
+          source /venvs/ambient/bin/activate # Activate our virtual Environment
           pip install -r requirements.txt # Install our dependencies
           echo "${{ secrets.ENV }}" >> .env
           set -m; nohup gunicorn wsgi:application -b 127.0.0.1:8003 &> /dev/null & # run gunicorn as a daemon
