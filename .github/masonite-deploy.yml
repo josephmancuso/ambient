@@ -1,0 +1,29 @@
+name: Deployment
+
+on: [push] # Change this line to "on: [release]" if you just want it on GitHub releases
+
+jobs:
+  build:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: executing remote ssh commands using password
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        port: ${{ secrets.PORT }}
+        script: |
+          mkdir -p /srv/sites/basic  # Make the directory if it doesnt exist
+          cd /srv/sites/basic # Go to that directory
+          git clone https://github.com/${{ github.repository }}.git ${{ github.sha }} # Clone the current repo
+          fuser -k 8001/tcp # Kill the application already running on 8001 (current production app)
+          shopt -s extglob # enable the command below this one
+          rm -rfv !("${{ github.sha }}") # Delete all directories except for the one we just created (old deployments)
+          cd ${{ github.sha }} # Go to the directory we just made (current deployment)
+          python3 -m venv /venvs/basic # Make our virtual environment if it doesn't exist
+          source /venvs/basic/bin/activate # Activate our virtual Environment
+          pip install -r requirements.txt # Install our dependencies
+          echo "${{ secrets.ENV }}" >> .env
+          set -m; nohup gunicorn wsgi:application -b 127.0.0.1:8003 &> /dev/null & # run gunicorn as a daemon
