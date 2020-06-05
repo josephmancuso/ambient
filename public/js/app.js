@@ -1927,6 +1927,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2030,7 +2032,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
           "volume": 20
         }, {
           "label": "car",
-          "volume": 30
+          "volume": 15
         }]
       }
     };
@@ -19769,10 +19771,12 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
+  return _c("div", { staticClass: "flex justify-between" }, [
     _c(
       "div",
       {
+        staticClass:
+          "px-8 cursor-pointer hover:bg-blue-200 py-6 text-center shadow-xl border-2 border-gray-300",
         on: {
           click: function($event) {
             return _vm.play("Camping")
@@ -19785,6 +19789,8 @@ var render = function() {
     _c(
       "div",
       {
+        staticClass:
+          "px-8 cursor-pointer hover:bg-blue-200 py-6 text-center shadow-xl border-2 border-gray-300",
         on: {
           click: function($event) {
             return _vm.play("Calm in a car")
@@ -19797,6 +19803,8 @@ var render = function() {
     _c(
       "div",
       {
+        staticClass:
+          "px-8 cursor-pointer hover:bg-blue-200 py-6 text-center shadow-xl border-2 border-gray-300",
         on: {
           click: function($event) {
             return _vm.play("Driving at night in the rain")
@@ -19809,6 +19817,8 @@ var render = function() {
     _c(
       "div",
       {
+        staticClass:
+          "px-8 cursor-pointer hover:bg-blue-200 py-6 text-center shadow-xl border-2 border-gray-300",
         on: {
           click: function($event) {
             return _vm.play("Summer Day")
@@ -19821,6 +19831,8 @@ var render = function() {
     _c(
       "div",
       {
+        staticClass:
+          "px-8 cursor-pointer hover:bg-blue-200 py-6 text-center shadow-xl border-2 border-gray-300",
         on: {
           click: function($event) {
             return _vm.play("Sleeping by the beach")
@@ -19833,6 +19845,8 @@ var render = function() {
     _c(
       "div",
       {
+        staticClass:
+          "px-8 cursor-pointer hover:bg-blue-200 py-6 text-center shadow-xl border-2 border-gray-300",
         on: {
           click: function($event) {
             return _vm.play("Cafe")
@@ -19845,13 +19859,20 @@ var render = function() {
     _c(
       "div",
       {
+        staticClass:
+          "px-8 cursor-pointer hover:bg-blue-200 py-6 text-center shadow-xl border-2 border-gray-300",
         on: {
           click: function($event) {
             return _vm.mute()
           }
         }
       },
-      [_vm._v(" Mute ")]
+      [
+        _c("img", {
+          staticStyle: { width: "35px" },
+          attrs: { src: "/images/mute.svg" }
+        })
+      ]
     )
   ])
 }
