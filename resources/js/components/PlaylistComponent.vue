@@ -4,6 +4,8 @@
         <div @click="play('Calm in a car')"> Calm in a car </div>
         <div @click="play('Driving at night in the rain')"> Driving at night in the rain </div>
         <div @click="play('Summer Day')"> Summer Day </div>
+        <div @click="play('Sleeping by the beach')"> Sleeping by the beach </div>
+        <div @click="play('Cafe')"> Cafe </div>
         <div @click="mute()"> Mute </div>
     </div>
 </template>
@@ -38,6 +40,26 @@ export default {
                     {"label": "air-conditioner", "volume": 100},
                     {"label": "lawnmower", "volume": 30},
                     {"label": "bird", "volume": 50},
+                ],
+                'Sleeping by the beach': [
+                    {"label": "cicada", "volume": 5},
+                    {"label": "ocean", "volume": 60},
+                    {"label": "night", "volume": 100},
+                    {"label": "fire", "volume": 100},
+                    {"label": "car", "volume": 10},
+                    {"label": "heartbeat", "volume": 100},
+                    {"label": "blaze", "volume": 20},
+                ],
+                'Train Ride': [
+                    {"label": "train", "volume": 100},
+                    {"label": "heartbeat", "volume": 100},
+                    {"label": "air-conditioner", "volume": 100},
+                ],
+                'Cafe': [
+                    {"label": "cafe", "volume": 30},
+                    {"label": "jazz", "volume": 30},
+                    {"label": "bird", "volume": 20},
+                    {"label": "car", "volume": 30},
                 ],
             }
         }

@@ -1925,6 +1925,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -1984,6 +1986,51 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         }, {
           "label": "bird",
           "volume": 50
+        }],
+        'Sleeping by the beach': [{
+          "label": "cicada",
+          "volume": 5
+        }, {
+          "label": "ocean",
+          "volume": 60
+        }, {
+          "label": "night",
+          "volume": 100
+        }, {
+          "label": "fire",
+          "volume": 100
+        }, {
+          "label": "car",
+          "volume": 10
+        }, {
+          "label": "heartbeat",
+          "volume": 100
+        }, {
+          "label": "blaze",
+          "volume": 20
+        }],
+        'Train Ride': [{
+          "label": "train",
+          "volume": 100
+        }, {
+          "label": "heartbeat",
+          "volume": 100
+        }, {
+          "label": "air-conditioner",
+          "volume": 100
+        }],
+        'Cafe': [{
+          "label": "cafe",
+          "volume": 30
+        }, {
+          "label": "jazz",
+          "volume": 30
+        }, {
+          "label": "bird",
+          "volume": 20
+        }, {
+          "label": "car",
+          "volume": 30
         }]
       }
     };
@@ -19769,6 +19816,30 @@ var render = function() {
         }
       },
       [_vm._v(" Summer Day ")]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        on: {
+          click: function($event) {
+            return _vm.play("Sleeping by the beach")
+          }
+        }
+      },
+      [_vm._v(" Sleeping by the beach ")]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        on: {
+          click: function($event) {
+            return _vm.play("Cafe")
+          }
+        }
+      },
+      [_vm._v(" Cafe ")]
     ),
     _vm._v(" "),
     _c(
