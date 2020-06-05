@@ -1899,6 +1899,123 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PlaylistComponent.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PlaylistComponent.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _app_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../app.js */ "./resources/js/app.js");
+function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      'playlists': {
+        'Camping': [{
+          "label": "fire",
+          "volume": 20
+        }, {
+          "label": "rain",
+          "volume": 60
+        }, {
+          "label": "night",
+          "volume": 60
+        }, {
+          "label": "thunder",
+          "volume": 40
+        }, {
+          "label": "cicada",
+          "volume": 5
+        }],
+        'Calm in a car': [{
+          "label": "rain",
+          "volume": 30
+        }, {
+          "label": "car-rain",
+          "volume": 100
+        }, {
+          "label": "thunder",
+          "volume": 70
+        }, {
+          "label": "cicada",
+          "volume": 5
+        }, {
+          "label": "night",
+          "volume": 45
+        }],
+        'Driving at night in the rain': [{
+          "label": "car-rain",
+          "volume": 100
+        }, {
+          "label": "car",
+          "volume": 30
+        }, {
+          "label": "thunder",
+          "volume": 60
+        }, {
+          "label": "night",
+          "volume": 30
+        }],
+        'Summer Day': [{
+          "label": "air-conditioner",
+          "volume": 100
+        }, {
+          "label": "lawnmower",
+          "volume": 30
+        }, {
+          "label": "bird",
+          "volume": 50
+        }]
+      }
+    };
+  },
+  methods: {
+    play: function play(playlist) {
+      this.mute();
+      var sound;
+
+      var _iterator = _createForOfIteratorHelper(this.playlists[playlist]),
+          _step;
+
+      try {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          sound = _step.value;
+          console.log(sound);
+          _app_js__WEBPACK_IMPORTED_MODULE_0__["EventBus"].$emit("play-".concat(sound.label, "-volume"), sound.volume);
+        }
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
+      }
+    },
+    mute: function mute(playlist) {
+      _app_js__WEBPACK_IMPORTED_MODULE_0__["EventBus"].$emit("adjust-volume", 0);
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SoundComponent.vue?vue&type=script&lang=js&":
 /*!*************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/SoundComponent.vue?vue&type=script&lang=js& ***!
@@ -1908,6 +2025,7 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _app_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../app.js */ "./resources/js/app.js");
 //
 //
 //
@@ -1924,10 +2042,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  mounted: function mounted() {
+    this.sound.audio = new Audio(this.$attrs.file);
+    var vueObj = this;
+    _app_js__WEBPACK_IMPORTED_MODULE_0__["EventBus"].$on("play-".concat(this.$attrs.label, "-volume"), function (volume) {
+      console.log("should now play sound", vueObj.sound, volume);
+      vueObj.play(volume);
+    });
+    _app_js__WEBPACK_IMPORTED_MODULE_0__["EventBus"].$on("adjust-volume", function (volume) {
+      console.log('adjust volume to', volume);
+      vueObj.sound.volume = volume;
+
+      if (volume == 0) {
+        vueObj.sound.play = false;
+      }
+    });
+  },
   data: function data() {
     return {
       sound: {
@@ -1946,23 +2078,43 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
-    playSound: function playSound() {
-      if (this.$attrs.file) {
-        var audio = new Audio(this.$attrs.file);
+    play: function play() {
+      var volume = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 100;
+      this.sound.play = true;
+      this.sound.volume = volume;
+      this.sound.audio.loop = true;
+      this.sound.audio.play();
+    },
+    toggleSound: function toggleSound() {
+      1;
 
-        if (this.sound.play) {
-          return this.pauseSound();
-        } else {
-          this.sound.volume = 100;
-          this.sound.play = true;
-          this.sound.audio = audio;
-          this.sound.audio.loop = true;
-          this.sound.audio.play();
-        }
-      }
+      if (this.sound.play) {
+        console.log('pause sound');
+        return this.pause();
+      } else {
+        console.log('play sound');
+        return this.play();
+      } // let event = {
+      //     "sounds": [
+      //         {
+      //             "label": "fire",
+      //             "volume": 20
+      //         }
+      //     ]
+      // }
+      // let sound;
+      // for (sound of event.sounds) {
+      //     console.log(sound)
+      //     EventBus.$emit(`play-${sound.label}-volume`, sound.volume)
+      // }
+
     },
     pauseSound: function pauseSound() {
+      this.sound.play = false;
       this.sound.volume = 0;
+      this.sound.audio.pause();
+    },
+    pause: function pause() {
       this.sound.play = false;
       this.sound.audio.pause();
     }
@@ -19555,6 +19707,90 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PlaylistComponent.vue?vue&type=template&id=65c65220&":
+/*!********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PlaylistComponent.vue?vue&type=template&id=65c65220& ***!
+  \********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c(
+      "div",
+      {
+        on: {
+          click: function($event) {
+            return _vm.play("Camping")
+          }
+        }
+      },
+      [_vm._v(" Camping ")]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        on: {
+          click: function($event) {
+            return _vm.play("Calm in a car")
+          }
+        }
+      },
+      [_vm._v(" Calm in a car ")]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        on: {
+          click: function($event) {
+            return _vm.play("Driving at night in the rain")
+          }
+        }
+      },
+      [_vm._v(" Driving at night in the rain ")]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        on: {
+          click: function($event) {
+            return _vm.play("Summer Day")
+          }
+        }
+      },
+      [_vm._v(" Summer Day ")]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        on: {
+          click: function($event) {
+            return _vm.mute()
+          }
+        }
+      },
+      [_vm._v(" Mute ")]
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SoundComponent.vue?vue&type=template&id=1c8ace4e&":
 /*!*****************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/SoundComponent.vue?vue&type=template&id=1c8ace4e& ***!
@@ -19578,7 +19814,7 @@ var render = function() {
           {
             on: {
               click: function($event) {
-                return _vm.playSound()
+                return _vm.toggleSound()
               }
             }
           },
@@ -31803,9 +32039,12 @@ module.exports = function(module) {
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
   \*****************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: EventBus */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EventBus", function() { return EventBus; });
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -31825,12 +32064,14 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('sound-component', __webpack_require__(/*! ./components/SoundComponent.vue */ "./resources/js/components/SoundComponent.vue")["default"]);
+Vue.component('playlist-component', __webpack_require__(/*! ./components/PlaylistComponent.vue */ "./resources/js/components/PlaylistComponent.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+var EventBus = new Vue();
 var app = new Vue({
   el: '#app'
 });
@@ -31866,6 +32107,75 @@ if (token) {
 } else {
   console.error('CSRF token not found: https://docs.masoniteproject.com/security/csrf-protection#ajax-vue-axios');
 }
+
+/***/ }),
+
+/***/ "./resources/js/components/PlaylistComponent.vue":
+/*!*******************************************************!*\
+  !*** ./resources/js/components/PlaylistComponent.vue ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _PlaylistComponent_vue_vue_type_template_id_65c65220___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PlaylistComponent.vue?vue&type=template&id=65c65220& */ "./resources/js/components/PlaylistComponent.vue?vue&type=template&id=65c65220&");
+/* harmony import */ var _PlaylistComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PlaylistComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/PlaylistComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _PlaylistComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _PlaylistComponent_vue_vue_type_template_id_65c65220___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _PlaylistComponent_vue_vue_type_template_id_65c65220___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/PlaylistComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/PlaylistComponent.vue?vue&type=script&lang=js&":
+/*!********************************************************************************!*\
+  !*** ./resources/js/components/PlaylistComponent.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PlaylistComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./PlaylistComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PlaylistComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PlaylistComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/PlaylistComponent.vue?vue&type=template&id=65c65220&":
+/*!**************************************************************************************!*\
+  !*** ./resources/js/components/PlaylistComponent.vue?vue&type=template&id=65c65220& ***!
+  \**************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PlaylistComponent_vue_vue_type_template_id_65c65220___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./PlaylistComponent.vue?vue&type=template&id=65c65220& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PlaylistComponent.vue?vue&type=template&id=65c65220&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PlaylistComponent_vue_vue_type_template_id_65c65220___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PlaylistComponent_vue_vue_type_template_id_65c65220___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
 
 /***/ }),
 
