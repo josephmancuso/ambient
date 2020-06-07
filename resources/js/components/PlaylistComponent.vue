@@ -1,6 +1,6 @@
 <template>
     <div class="flex justify-between flex-wrap">
-        <div class="px-8 m-2 w-1/4 cursor-pointer hover:bg-blue-200 py-6 text-center shadow-xl border-rounded bg-gray-100 border-2 border-gray-300" @click="play('Camping')"> Camping </div>
+        <div class="px-8 m-2 w-1/4 border-2 cursor-pointer hover:bg-blue-200 py-6 text-center shadow-xl border-rounded bg-gray-100 border-2 border-gray-300" @click="play('Camping')"> Camping </div>
         <div class="px-8 m-2 w-1/4 border-2 cursor-pointer hover:bg-blue-200 py-6 text-center shadow-xl border-rounded bg-gray-100 border-2 border-gray-300" @click="play('Calm in a car')"> Calm in a car </div>
         <div class="px-8 m-2 w-1/4 border-2 cursor-pointer hover:bg-blue-200 py-6 text-center shadow-xl border-rounded bg-gray-100 border-2 border-gray-300" @click="play('Driving at night in the rain')"> Driving at night in the rain </div>
         <div class="px-8 m-2 w-1/4 border-2 cursor-pointer hover:bg-blue-200 py-6 text-center shadow-xl border-rounded bg-gray-100 border-2 border-gray-300" @click="play('Summer Day')"> Summer Day </div>

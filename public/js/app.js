@@ -19796,7 +19796,7 @@ var render = function() {
       "div",
       {
         staticClass:
-          "px-8 m-2 w-1/4 cursor-pointer hover:bg-blue-200 py-6 text-center shadow-xl border-rounded bg-gray-100 border-2 border-gray-300",
+          "px-8 m-2 w-1/4 border-2 cursor-pointer hover:bg-blue-200 py-6 text-center shadow-xl border-rounded bg-gray-100 border-2 border-gray-300",
         on: {
           click: function($event) {
             return _vm.play("Camping")
