@@ -1,33 +1,33 @@
-"""Database Settings."""
+import os
 
-import logging
+from masonite.orm.builder.QueryBuilder import QueryBuilder
 
-from masonite import env
-from masonite.environment import LoadEnvironment
-from orator import DatabaseManager, Model
+from config.database import QueryBuilder
+from masonite.environment import LoadEnvironment, env
 
-"""Load Environment Variables
-Loads in the environment variables when this page is imported.
+"""
+|--------------------------------------------------------------------------
+| Load Environment Variables
+|--------------------------------------------------------------------------
+|
+| Loads in the environment variables when this page is imported.
+|
 """
 
 LoadEnvironment()
 
-"""Database Settings
-Set connection database settings here as a dictionary. Follow the
-format below to create additional connection settings.
-
-Each key is a connection, not a driver. You may have as many
-connections as you need.
-
-Supported Drivers: 'sqlite', 'mysql', 'postgres'
+"""
+The connections here don't determine the database but determine the "connection".
+They can be named whatever you want.
 """
 
 DATABASES = {
-    'default': env('DB_CONNECTION'),
+    'default': env('DB_CONNECTION', 'sqlite'),
     'sqlite': {
         'driver': 'sqlite',
-        'database': env('DB_DATABASE'),
+        'database': env('SQLITE_DB_DATABASE', 'masonite.db'),
         'log_queries': env('DB_LOG'),
+        'prefix': ''
     },
     'mysql': {
         'driver': 'mysql',
@@ -49,18 +49,4 @@ DATABASES = {
     },
 }
 
-DB = DatabaseManager(DATABASES)
-Model.set_connection_resolver(DB)
-
-
-logger = logging.getLogger('orator.connection.queries')
-logger.setLevel(logging.DEBUG)
-
-formatter = logging.Formatter(
-    'It took %(elapsed_time)sms to execute the query %(query)s'
-)
-
-handler = logging.StreamHandler()
-handler.setFormatter(formatter)
-
-logger.addHandler(handler)
+DB = QueryBuilder(connection_details=DATABASES)
