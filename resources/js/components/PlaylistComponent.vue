@@ -1,12 +1,13 @@
 <template>
-    <div class="flex justify-between">
-        <div class="px-8 cursor-pointer hover:bg-blue-200 py-6 text-center shadow-xl border-2 border-gray-300" @click="play('Camping')"> Camping </div>
-        <div class="px-8 cursor-pointer hover:bg-blue-200 py-6 text-center shadow-xl border-2 border-gray-300" @click="play('Calm in a car')"> Calm in a car </div>
-        <div class="px-8 cursor-pointer hover:bg-blue-200 py-6 text-center shadow-xl border-2 border-gray-300" @click="play('Driving at night in the rain')"> Driving at night in the rain </div>
-        <div class="px-8 cursor-pointer hover:bg-blue-200 py-6 text-center shadow-xl border-2 border-gray-300" @click="play('Summer Day')"> Summer Day </div>
-        <div class="px-8 cursor-pointer hover:bg-blue-200 py-6 text-center shadow-xl border-2 border-gray-300" @click="play('Sleeping by the beach')"> Sleeping by the beach </div>
-        <div class="px-8 cursor-pointer hover:bg-blue-200 py-6 text-center shadow-xl border-2 border-gray-300" @click="play('Cafe')"> Cafe </div>
-        <div class="px-8 cursor-pointer hover:bg-blue-200 py-6 text-center shadow-xl border-2 border-gray-300" @click="mute()"> 
+    <div class="flex justify-between flex-wrap">
+        <div class="px-8 m-2 w-1/4 cursor-pointer hover:bg-blue-200 py-6 text-center shadow-xl border-rounded bg-gray-100 border-2 border-gray-300" @click="play('Camping')"> Camping </div>
+        <div class="px-8 m-2 w-1/4 border-2 cursor-pointer hover:bg-blue-200 py-6 text-center shadow-xl border-rounded bg-gray-100 border-2 border-gray-300" @click="play('Calm in a car')"> Calm in a car </div>
+        <div class="px-8 m-2 w-1/4 border-2 cursor-pointer hover:bg-blue-200 py-6 text-center shadow-xl border-rounded bg-gray-100 border-2 border-gray-300" @click="play('Driving at night in the rain')"> Driving at night in the rain </div>
+        <div class="px-8 m-2 w-1/4 border-2 cursor-pointer hover:bg-blue-200 py-6 text-center shadow-xl border-rounded bg-gray-100 border-2 border-gray-300" @click="play('Summer Day')"> Summer Day </div>
+        <div class="px-8 m-2 w-1/4 border-2 cursor-pointer hover:bg-blue-200 py-6 text-center shadow-xl border-rounded bg-gray-100 border-2 border-gray-300" @click="play('Sleeping by the beach')"> Sleeping by the beach </div>
+        <div class="px-8 m-2 w-1/4 border-2 cursor-pointer hover:bg-blue-200 py-6 text-center shadow-xl border-rounded bg-gray-100 border-2 border-gray-300" @click="play('Cafe')"> Cafe </div>
+        <div class="px-8 m-2 w-1/4 border-2 cursor-pointer hover:bg-blue-200 py-6 text-center shadow-xl border-rounded bg-gray-100 border-2 border-gray-300" @click="play('City')"> City </div>
+        <div class="px-8 m-2 w-1/4 border-2 cursor-pointer hover:bg-blue-200 py-6 text-center shadow-xl border-rounded bg-gray-100 border-2 border-gray-300" @click="mute()"> 
         <img src="/images/mute.svg" style="width: 35px"/>
         </div>
     </div>
@@ -24,6 +25,7 @@ export default {
                     {"label": "night", "volume": 60},
                     {"label": "thunder", "volume": 40},
                     {"label": "cicada", "volume": 5},
+                    {"label": "frog", "volume": 15},
                 ],
                 'Calm in a car': [
                     {"label": "rain", "volume": 30},
@@ -62,6 +64,13 @@ export default {
                     {"label": "jazz", "volume": 30},
                     {"label": "bird", "volume": 20},
                     {"label": "car", "volume": 15},
+                    {"label": "record", "volume": 10}, 
+                    {"label": "fire", "volume": 50},
+                ],
+                'City': [
+                    {"label": "city", "volume": 25},
+                    {"label": "construction", "volume": 25},
+                    {"label": "car", "volume": 25},
                 ],
             }
         }
