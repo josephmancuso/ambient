@@ -2,6 +2,7 @@
 .env
 *__pycache__
 venv
+venv 2
 .env.*
 .vscode
 .pytest_cache
