@@ -3,6 +3,7 @@
 from masonite.view import View
 from masonite.request import Request
 from masonite.controllers import Controller
+from app.Sound import Sound
 
 
 class WelcomeController(Controller):
@@ -18,4 +19,6 @@ class WelcomeController(Controller):
         Returns:
             masonite.view.View -- The Masonite view class.
         """
+        dd(Sound.all().count())
+        print('created')
         return view.render('welcome')

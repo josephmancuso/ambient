@@ -1,7 +1,7 @@
 """A ORMProvider Service Provider."""
 
 from masonite.provider import ServiceProvider
-from masonite.orm.commands import MigrateCommand, MakeMigrationCommand
+from masonite.orm.commands import MigrateCommand, MakeMigrationCommand, MigrateRefreshCommand, MigrateRollbackCommand
 
 class ORMProvider(ServiceProvider):
     """Provides Services To The Service Container."""
@@ -17,4 +17,6 @@ class ORMProvider(ServiceProvider):
         self.commands(
             MigrateCommand(),
             MakeMigrationCommand(),
+            MigrateRefreshCommand(),
+            MigrateRollbackCommand(),
         )
