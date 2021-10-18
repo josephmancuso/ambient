@@ -1,6 +1,6 @@
 """Cache Settings."""
 
-from masonite import env
+from masonite.environment import env
 
 """Cache Driver
 Caching is a great way to gain an instant speed boost to your application.

@@ -1,5 +1,5 @@
 {
-    "/public/js/app.js": "/public/js/app.js",
-    "/public/css/app.css": "/public/css/app.css",
-    "/public/css/main.css": "/public/css/main.css"
+    "/storage/compiled/js/app.js": "/storage/compiled/js/app.js",
+    "/storage/compiled/css/main.css": "/storage/compiled/css/main.css",
+    "/public/css/app.css": "/public/css/app.css"
 }

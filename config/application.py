@@ -2,7 +2,7 @@
 
 import os
 
-from masonite import env
+from masonite.environment import env
 
 """Application Name
 This value is the name of your application. This value is used when the
@@ -27,7 +27,7 @@ it to encrypt and decrypt various values using the Masonite Sign
 class. Read the documentation on Encryption to find out how.
 """
 
-KEY = env('KEY', None)
+KEY = env('APP_KEY', None)
 
 """Application URL
 Sets the root URL of the application. This is primarily used for testing
