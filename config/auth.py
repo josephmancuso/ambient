@@ -1,6 +1,6 @@
 """Authentication Settings."""
 
-from masonite import env
+from masonite.environment import env
 
 from app.User import User
 
@@ -16,31 +16,10 @@ be authenticated.
 @see masonite.auth.Auth
 """
 
-AUTH = {
-    'defaults': {
-        'guard': env('AUTH_GUARD', 'web')
-    },
-    'guards': {
-        'web': {
-            'driver': 'cookie',
-            'model': User,
-            'drivers': { # 'cookie', 'jwt'
-                'jwt': {
-                    'reauthentication': True,
-                    'lifetime': '5 minutes'
-                }
-            }
-        },
-    }
-}
 
-DRIVERS = {
-    'cookie': {},
-    'jwt': {
-        """Whether or not to reauthenticate with the database when the token expires."""
-        'reauthentication': True,
-
-        """How long the token should live for before being refreshed."""
-        'lifetime': '5 minutes'
-    }
+GUARDS = {
+    "default": "web",
+    "web": {"model": User},
+    "password_reset_table": "password_resets",
+    "password_reset_expiration": 1440,  # in minutes. 24 hours. None if disabled
 }

@@ -2,10 +2,12 @@
 .env
 *__pycache__
 venv
-venv 2
+venv2
+venv4
 .env.*
 .vscode
 .pytest_cache
 node_modules
 package-lock.json
 !.env.testing
+**/*.DS_Store

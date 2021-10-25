@@ -2,7 +2,7 @@
 
 import os
 
-from masonite import env
+from masonite.environment import env
 
 """Default Channel
 The default channel will be used by Masonite whenever it needs
